@@ -19,8 +19,10 @@ def load_base_model_and_tokenizer(model_name='unsloth/Qwen2.5-0.5B-Instruct-bnb-
 def count_total_parameters(model):
     return sum(p.numel() for p in model.parameters())
 
-# Step 3 - is_model_4bit_quantized (not yet solved)
-# TODO: implement
+# Step 3 - is_model_4bit_quantized
+from bitsandbytes.nn import Linear4bit 
+def is_model_4bit_quantized(model):
+    return any(isinstance(m,Linear4bit) for m in model.modules())
 
 # Step 4 - ensure_pad_token (not yet solved)
 # TODO: implement
