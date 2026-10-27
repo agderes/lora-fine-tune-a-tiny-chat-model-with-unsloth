@@ -35,8 +35,22 @@ def ensure_pad_token(tokenizer):
 def get_lora_target_modules():
     return ['q_proj', 'k_proj', 'v_proj', 'o_proj']
 
-# Step 6 - attach_lora_adapters (not yet solved)
-# TODO: implement
+# Step 6 - attach_lora_adapters
+from unsloth import FastLanguageModel
+def attach_lora_adapters(model, r=8, lora_alpha=16, target_modules=None):
+   
+    if target_modules is None:
+        target_modules = get_lora_target_modules()
+    
+    
+    peft_model = FastLanguageModel.get_peft_model(model,
+    target_modules = target_modules,
+    r=r,
+    lora_alpha=lora_alpha,
+    lora_dropout=0,
+    bias='none')
+
+    return peft_model
 
 # Step 7 - count_trainable_parameters (not yet solved)
 # TODO: implement
