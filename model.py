@@ -61,8 +61,16 @@ def count_trainable_parameters(model):
 def trainable_fraction(trainable_count, total_count):
     return float(trainable_count/total_count)
 
-# Step 9 - build_instruction_examples (not yet solved)
-# TODO: implement
+# Step 9 - build_instruction_examples
+def build_instruction_examples():
+    return [
+    {'instruction':'What language is spoken in Türkiye?',
+    'response': 'The spoken language in Türkiye is Turkish'},
+    {'instruction': 'What is 3x3?',
+    'response': 'It equals 9'},
+    {'instruction': 'What does the fox say?',
+    'response': 'Din ding ding ding, ahi ahi ahiho'}
+    ]
 
 # Step 10 - format_instruction_example (not yet solved)
 # TODO: implement
