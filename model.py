@@ -82,8 +82,7 @@ def format_all_examples(examples):
     for ex in examples:
         result.append(format_instruction_example(ex))
     
-    if len(result) == len(examples):
-        return result
+    return result
 
 # Step 12 - build_text_dataset (not yet solved)
 # TODO: implement
