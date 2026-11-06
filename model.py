@@ -97,8 +97,22 @@ def tokenize_text(tokenizer, text):
 def count_tokens(input_ids):
     return len(input_ids)
 
-# Step 15 - build_training_arguments (not yet solved)
-# TODO: implement
+# Step 15 - build_training_arguments
+from transformers import TrainingArguments 
+import torch
+def build_training_arguments(output_dir='./sft_out', max_steps=5, learning_rate=2e-4):
+    use_bf16 = torch.cuda.is_bf16_supported()
+    training_args = TrainingArguments(output_dir=output_dir,
+    max_steps=max_steps,
+    per_device_train_batch_size = 1,
+    learning_rate = learning_rate,
+    gradient_accumulation_steps = 1,
+    bf16= use_bf16,
+    fp16 = not use_bf16,
+    optim='adamw_8bit',
+    logging_steps = 1
+    )
+    return training_args
 
 # Step 16 - build_sft_trainer (not yet solved)
 # TODO: implement
